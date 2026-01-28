@@ -35,10 +35,7 @@ public class GameEngine {
         } else if (attempts >= MAX_ATTEMPTS) {
             gameOver = true;
             return new GuessResult(false, "Game Over! You've used all " + MAX_ATTEMPTS + " attempts. The number was " + target + ".", attempts);
-        } else if (guess < target) {
-            return new GuessResult(false, "Too low! Try a higher number.", attempts);
         } else {
-            return new GuessResult(false, "Too high! Try a lower number.", attempts);
             int remaining = MAX_ATTEMPTS - attempts;
             GuessResult result;
             if (guess < target) {
@@ -63,10 +60,10 @@ public class GameEngine {
         return gameWon;
     }
 
+    public boolean isGameOver() { return gameOver; }
+
     public boolean hasUserQuit() {
         return userQuit;
-    public boolean isGameOver() {
-        return gameOver;
     }
 
     public int getAttempts() {
